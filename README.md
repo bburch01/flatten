@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  Flatten a multidimensional integer array. Built with Go.
+  Flatten multidimensional integer arrays. Built with Go.
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 ## Author
 Barry T. Burch<br>
 
-Digital native with over 20 years of experience in hardware/software design/engineering at:
+Barry is a digital native with over 20 years of experience in software (and hardware) design and engineering at:
 
 <p align="middle">
     <img src="./assets/images/ti-logo-2.png" align="center" hspace="10">
@@ -39,23 +39,29 @@ www.linkedin.com/in/barry-burch-digital-native<br>
 
 The flatten package was created to be submitted to Theorem LLC as the coding exercise portion of an initial screening for a position as a software engineer.
 
-The flatten package currently only supports integers as elements in multidimensional arrays supplied as input.
 
 ## Usage
-blah<br>
-balh<br>
-blah<br>
-blah<br>
-blah<br>
-balh<br>
-blah<br>
-blah<br>
-blah<br>
-balh<br>
-blah<br>
-blah<br>
 
+Flatten takes a single input parameter: []interface{}. This Go data structure is suitable for holding a multidimensional
+array where the elements can be of any type (including user defined types). E.g., given the following snippet of Go code:
+
+var s = []interface{}{ []interface{}{1, 2, []interface{}{3, 4, 5, []interface{}{6, 7}} }}
+
+s now represents the following multidimensional integer array: [[1 2 [3 4 5 [6 7]]]] and can be passed as a parameter
+to Flatten.
+
+The flatten package includes the helper function Abstract that allows for a more intuitive way to build 
+multidimensional arrays for input to Flatten, e.g.:
+
+s := Abstract(1, 2, Abstract(3, 4, 5, Abstract(6, 7)))
+
+While Flatten accepts as input a multidimensional array whose elements can be any type, it will return an error
+on the first element it finds that is not an integer, i.e. Flatten currently only supports integer arrays.
 
 ## Performance
 The Flatten function in the flatten package uses a recursive algorithm that visits each element in the multidimensional array (the input) only once and therefore has a complexity of O(n), i.e. constant time.
+
+The Flatten function's recursion anchor is implicit in that it is not possible to supply an input that has an 
+infinite number of sub-arrays (i.e. a multidimensional array that has an infinite number of dimensions). This means
+that the recursion will always reach the anchor.
 
