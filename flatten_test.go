@@ -21,20 +21,20 @@ type errTypeB struct {
 }
 
 var validInputCases = []validInputCase{
-	{in: Abstract(Abstract(), 1, 2, 3), out: []int{1, 2, 3}},
-	{in: Abstract(1, 2, 3, Abstract()), out: []int{1, 2, 3}},
-	{in: Abstract(1, 2, Abstract(), 3), out: []int{1, 2, 3}},
-	{in: Abstract(Abstract(1, 2, 3), 4, 5, 6), out: []int{1, 2, 3, 4, 5, 6}},
-	{in: Abstract(Abstract(1, 2, 3), 4, 5, 6), out: []int{1, 2, 3, 4, 5, 6}},
-	{in: Abstract(Abstract(1, Abstract(2, Abstract(3, 4)), 5), 6, Abstract(Abstract(), 7), 8, 9),
+	{in: Compose(Compose(), 1, 2, 3), out: []int{1, 2, 3}},
+	{in: Compose(1, 2, 3, Compose()), out: []int{1, 2, 3}},
+	{in: Compose(1, 2, Compose(), 3), out: []int{1, 2, 3}},
+	{in: Compose(Compose(1, 2, 3), 4, 5, 6), out: []int{1, 2, 3, 4, 5, 6}},
+	{in: Compose(Compose(1, 2, 3), 4, 5, 6), out: []int{1, 2, 3, 4, 5, 6}},
+	{in: Compose(Compose(1, Compose(2, Compose(3, 4)), 5), 6, Compose(Compose(), 7), 8, 9),
 		out: []int{1, 2, 3, 4, 5, 6, 7, 8, 9}},
 }
 
 var invalidInputCases = []invalidInputCase{
-	{in: Abstract(1, 2, "three")},
-	{in: Abstract(Abstract(), 1.0, 2, 3)},
-	{in: Abstract(Abstract(), 1, errTypeB{code: "error", message: "kaboom!"}, 3)},
-	{in: Abstract(1, 2, true)},
+	{in: Compose(1, 2, "three")},
+	{in: Compose(Compose(), 1.0, 2, 3)},
+	{in: Compose(Compose(), 1, errTypeB{code: "error", message: "kaboom!"}, 3)},
+	{in: Compose(1, 2, true)},
 }
 
 func TestValidInputCases(t *testing.T) {

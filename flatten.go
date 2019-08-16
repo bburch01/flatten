@@ -24,11 +24,11 @@ func Flatten(s []interface{}) (r []int, err error) {
 	return
 }
 
-// Abstract is a helper function that simplifies creating multidimensional arrays to be used for input
+// Compose is a helper function that simplifies creating multidimensional arrays to be used for input
 // to the Flatten function. Here is an example of how to use Abastract to build input for
 // Flatten that corresponds to the multidimensional integer array [[1 2] [3, 4, 5 [6, 7]]] :
-// s = Abstract(1, 2, Abstract(3, 4, 5, Abstract(6, 7)))
+// s = Compose(1, 2, Compose(3, 4, 5, Compose(6, 7)))
 //
-func Abstract(s ...interface{}) []interface{} {
+func Compose(s ...interface{}) []interface{} {
 	return s
 }

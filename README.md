@@ -50,10 +50,10 @@ var s = []interface{}{ []interface{}{1, 2, []interface{}{3, 4, 5, []interface{}{
 s now represents the following multidimensional integer array: [[1 2 [3 4 5 [6 7]]]] and can be passed as a parameter
 to Flatten.
 
-The flatten package includes the helper function Abstract that allows for a more intuitive way to build 
+The flatten package includes the helper function Compose that allows for a more intuitive way to build 
 multidimensional arrays for input to Flatten, e.g.:
 
-s := Abstract(1, 2, Abstract(3, 4, 5, Abstract(6, 7)))
+s := Compose(1, 2, Compose(3, 4, 5, Compose(6, 7)))
 
 While Flatten accepts as input a multidimensional array whose elements can be any type, it will return an error
 on the first element it finds that is not an integer, i.e. Flatten currently only supports integer arrays.
