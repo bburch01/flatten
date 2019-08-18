@@ -59,7 +59,7 @@ While Flatten accepts as input a multidimensional array whose elements can be an
 on the first element it finds that is not an integer, i.e. Flatten currently only supports integer arrays.
 
 ## Performance
-The Flatten function in the flatten package uses a recursive algorithm that visits each element in the multidimensional array (the input) only once and therefore has a complexity of O(n), i.e. constant time.
+The Flatten function in the flatten package uses a recursive algorithm that visits each element in the multidimensional array (the input) only once and therefore has a complexity of O(n), i.e. proportional to the number of array elements.
 
 The Flatten function's recursion anchor is implicit in that it is not possible to supply an input that has an 
 infinite number of sub-arrays (i.e. a multidimensional array that has an infinite number of dimensions). This means
